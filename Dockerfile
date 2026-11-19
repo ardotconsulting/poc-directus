@@ -4,6 +4,10 @@
 # never put them here. Tested with directus/directus:12.6.1.
 FROM directus/directus:12.6.1
 
+# Create data directories with correct ownership for the node user (UID 1000)
+USER node
+RUN mkdir -p /directus/data/uploads
+
 ENV DB_CLIENT=sqlite3 \
     DB_FILENAME=/directus/data/data.db \
     ADMIN_EMAIL=admin@ardotconsulting.com \
