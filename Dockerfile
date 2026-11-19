@@ -8,6 +8,9 @@ FROM directus/directus:12.6.1
 USER node
 RUN mkdir -p /directus/data/uploads
 
+# Copy the idempotent admin-claim script (post_deploy)
+COPY --chown=node:node setup-admin.sh /setup-admin.sh
+
 ENV DB_CLIENT=sqlite3 \
     DB_FILENAME=/directus/data/data.db \
     ADMIN_EMAIL=admin@ardotconsulting.com \
